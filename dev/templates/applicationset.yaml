@@ -6,7 +6,7 @@ spec:
   generators:
     - list:
         elements:
-          - app: my-app
+          - app: my-chart
   template:
     metadata:
       name: '{{app}}-app'
@@ -14,7 +14,7 @@ spec:
         - resources-finalizer.argocd.argoproj.io
     spec:
       destination:
-        namespace: '{{ .Chart.name }}-ns'
+        namespace: '{{ .Chart.name }}'
         server: 'https://kubernetes.default.svc'
       project: default 
       source:

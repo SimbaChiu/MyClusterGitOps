@@ -15,7 +15,7 @@ spec:
         - resources-finalizer.argocd.argoproj.io
     spec:
       destination:
-        namespace: '{{env}}-ns'
+        namespace: '{{env}}'
         server: 'https://kubernetes.default.svc'
       project: default 
       source:
