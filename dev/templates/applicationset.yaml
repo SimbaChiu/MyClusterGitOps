@@ -13,9 +13,6 @@ spec:
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:
-      destination:
-        namespace: '{{ .Chart.name }}'
-        server: 'https://kubernetes.default.svc'
       project: default 
       source:
         repoURL: https://github.com/SimbaChiu/MyClusterCharts
@@ -24,6 +21,9 @@ spec:
         helm:
           valueFiles:
             - /base/values.yaml
+      destination:
+        namespace: '{{ .Chart.name }}'
+        server: 'https://kubernetes.default.svc'
       syncPolicy: 
         automated:
           prune: true
