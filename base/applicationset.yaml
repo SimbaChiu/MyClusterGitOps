@@ -14,9 +14,6 @@ spec:
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:
-      destination:
-        namespace: '{{env}}'
-        server: 'https://kubernetes.default.svc'
       project: default 
       source:
         repoURL: https://github.com/SimbaChiu/MyClusterGitOps
@@ -25,6 +22,9 @@ spec:
         helm:
           valueFiles:
             - /base/values.yaml
+      destination:
+        namespace: '{{env}}'
+        server: 'https://kubernetes.default.svc'
       syncPolicy: 
         automated:
           prune: true
