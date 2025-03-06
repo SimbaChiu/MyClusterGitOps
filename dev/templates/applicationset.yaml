@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: '{{ .Chart.name }}-appset'
+spec:
+  generators:
+    - list:
+        elements:
+          - app: my-app
+  template:
+    metadata:
+      name: '{{app}}-app'
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      destination:
+        namespace: '{{ .Chart.name }}-ns'
+        server: 'https://kubernetes.default.svc'
+      project: default 
+      source:
+        repoURL: https://github.com/SimbaChiu/MyClusterCharts
+        path: '{{app}}'
+        targetRevision: main
+        helm:
+          valueFiles:
+            - /base/values.yaml
+      syncPolicy: 
+        automated:
+          prune: true
+          selfHeal: true
