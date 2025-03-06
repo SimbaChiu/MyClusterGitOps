@@ -9,7 +9,7 @@ spec:
           - app: my-chart
   template:
     metadata:
-      name: '{{.app}}-app'
+      name: '{{app}}-app'
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:
@@ -17,7 +17,7 @@ spec:
       source:
         repoURL: https://github.com/SimbaChiu/MyClusterCharts
         targetRevision: main
-        path: '{{.app}}'
+        path: '{{app}}'
         helm:
           valueFiles:
             - /base/values.yaml

@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: base-appset
-  # namespace: base-ns
+  namespace: argocd
 spec:
   generators:
     - list:
@@ -10,7 +10,7 @@ spec:
           - env: dev
   template:
     metadata:
-      name: '{{.env}}-app'
+      name: '{{env}}-app'
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:
@@ -18,12 +18,12 @@ spec:
       source:
         repoURL: https://github.com/SimbaChiu/MyClusterGitOps
         targetRevision: main
-        path: '{{.env}}'
+        path: '{{env}}'
         helm:
           valueFiles:
             - /base/values.yaml
       destination:
-        namespace: '{{.env}}'
+        namespace: '{{env}}'
         server: 'https://kubernetes.default.svc'
       syncPolicy: 
         automated:
