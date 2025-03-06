@@ -17,8 +17,8 @@ spec:
       project: default 
       source:
         repoURL: https://github.com/SimbaChiu/MyClusterGitOps
-        path: '{{.env}}'
         targetRevision: main
+        path: '{{.env}}'
         helm:
           valueFiles:
             - /base/values.yaml

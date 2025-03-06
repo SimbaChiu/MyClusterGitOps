@@ -16,8 +16,8 @@ spec:
       project: default 
       source:
         repoURL: https://github.com/SimbaChiu/MyClusterCharts
-        path: '{{.app}}'
         targetRevision: main
+        path: '{{.app}}'
         helm:
           valueFiles:
             - /base/values.yaml
