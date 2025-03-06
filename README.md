@@ -12,5 +12,5 @@ kubectl get csv -n operators
 
 # Init cluster
 ```
-kubectl create namespace base-ns
+kubectl create namespace dev
 ```
