@@ -10,20 +10,20 @@ spec:
           - env: dev
   template:
     metadata:
-      name: '{{env}}-app'
+      name: '{{.env}}-app'
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:
       project: default 
       source:
         repoURL: https://github.com/SimbaChiu/MyClusterGitOps
-        path: '{{env}}'
+        path: '{{.env}}'
         targetRevision: main
         helm:
           valueFiles:
             - /base/values.yaml
       destination:
-        namespace: '{{env}}'
+        namespace: '{{.env}}'
         server: 'https://kubernetes.default.svc'
       syncPolicy: 
         automated:
