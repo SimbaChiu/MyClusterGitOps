@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: '{{ .Chart.name }}-appset'
-  namespace: {{ .Values.namespace }}
+  namespace: '{{ .Chart.name }}'
 spec:
   generators:
     - list:
@@ -10,7 +10,7 @@ spec:
           - app: my-chart
   template:
     metadata:
-      name: '{{app}}-app'
+      name: 'dev-app'
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:
@@ -27,7 +27,7 @@ spec:
       #   ref: values
       destination:
         namespace: '{{ .Chart.name }}'
-        server: 'https://kubernetes.default.svc'
+        server: https://kubernetes.default.svc
       syncPolicy: 
         automated:
           prune: true
