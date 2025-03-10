@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: '{{ .Chart.name }}-appset'
+  namespace: {{ .Values.namespace }}
 spec:
   generators:
     - list:
