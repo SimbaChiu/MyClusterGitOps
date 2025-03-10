@@ -15,13 +15,13 @@ spec:
         - resources-finalizer.argocd.argoproj.io
     spec:
       project: default 
-      source:
-        repoURL: https://github.com/SimbaChiu/MyClusterGitOps
+      sources:
+      - repoURL: https://github.com/SimbaChiu/MyClusterGitOps
         targetRevision: main
         path: '{{env}}'
         helm:
           valueFiles:
-            - /base/values.yaml
+            - ../base/values.yaml
       destination:
         namespace: '{{env}}'
         server: 'https://kubernetes.default.svc'

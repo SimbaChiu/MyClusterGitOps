@@ -14,13 +14,16 @@ spec:
         - resources-finalizer.argocd.argoproj.io
     spec:
       project: default 
-      source:
-        repoURL: https://github.com/SimbaChiu/MyClusterCharts
+      sources:
+      - repoURL: https://github.com/SimbaChiu/MyClusterCharts
         targetRevision: main
         path: '{{app}}'
         helm:
           valueFiles:
-            - /dev/values.yaml
+            - $values/dev/values.yaml
+      - repoURL: https://github.com/SimbaChiu/MyClusterCharts
+        targetRevision: main
+        ref: values
       destination:
         namespace: '{{ .Chart.name }}'
         server: 'https://kubernetes.default.svc'
