@@ -19,9 +19,9 @@ spec:
       - repoURL: https://github.com/SimbaChiu/MyClusterGitOps
         targetRevision: main
         path: '{{env}}'
-        helm:
-          valueFiles:
-            - ../base/values.yaml
+        # helm:
+        #   valueFiles:
+        #     - ../base/values.yaml
       destination:
         namespace: '{{env}}'
         server: https://kubernetes.default.svc

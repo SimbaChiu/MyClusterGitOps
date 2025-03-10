@@ -18,12 +18,12 @@ spec:
       - repoURL: https://github.com/SimbaChiu/MyClusterCharts
         targetRevision: main
         path: '{{app}}'
-        helm:
-          valueFiles:
-            - $values/dev/values.yaml
-      - repoURL: https://github.com/SimbaChiu/MyClusterCharts
-        targetRevision: main
-        ref: values
+      #   helm:
+      #     valueFiles:
+      #       - $values/dev/values.yaml
+      # - repoURL: https://github.com/SimbaChiu/MyClusterCharts
+      #   targetRevision: main
+      #   ref: values
       destination:
         namespace: '{{ .Chart.name }}'
         server: 'https://kubernetes.default.svc'
