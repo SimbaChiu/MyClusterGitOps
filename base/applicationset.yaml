@@ -24,7 +24,7 @@ spec:
             - ../base/values.yaml
       destination:
         namespace: '{{env}}'
-        server: 'https://kubernetes.default.svc'
+        server: https://kubernetes.default.svc
       syncPolicy: 
         automated:
           prune: true
