@@ -10,6 +10,8 @@ kubectl create namespace dev
 
 ## Install ArgoCD
 ```
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.14.4/manifests/ha/install.yaml
 
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/<version>/manifests/ha/install.yaml
